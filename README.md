@@ -12,24 +12,12 @@ Open `http://127.0.0.1:8080`.
 
 ## Add locations
 
-Edit `locations.json`:
+Edit `locations.csv`. Latitude and longitude are preferred because the static
+site does not need a geocoding API key.
 
-```json
-[
-  {
-    "id": "store-name-60600",
-    "name": "Store Name",
-    "address": "123 Example Ave, Chicago, IL 60600",
-    "neighborhood": "Neighborhood",
-    "area": "north",
-    "zip": "60600",
-    "lat": 41.8781,
-    "lng": -87.6298,
-    "hours": "Daily 9 AM-9 PM",
-    "products": ["Old Vienna chips"],
-    "notes": "Endcap display near checkout"
-  }
-]
+```csv
+id,name,address,neighborhood,area,zip,lat,lng,hours,products,notes,demo
+store-name-60600,Store Name,"123 Example Ave, Chicago, IL 60600",Neighborhood,north,60600,41.8781,-87.6298,Daily 9 AM-9 PM,"Old Vienna chips; Riplets",Endcap display near checkout,false
 ```
 
 Valid `area` values: `north`, `west`, `south`, `suburbs`.

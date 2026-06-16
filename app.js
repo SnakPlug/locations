@@ -30,6 +30,82 @@ function normalize(value) {
   return String(value || "").trim().toLowerCase();
 }
 
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function parseCsv(text) {
+  const rows = [];
+  let row = [];
+  let field = "";
+  let inQuotes = false;
+
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    const next = text[index + 1];
+
+    if (char === '"' && inQuotes && next === '"') {
+      field += '"';
+      index += 1;
+      continue;
+    }
+
+    if (char === '"') {
+      inQuotes = !inQuotes;
+      continue;
+    }
+
+    if (char === "," && !inQuotes) {
+      row.push(field);
+      field = "";
+      continue;
+    }
+
+    if ((char === "\n" || char === "\r") && !inQuotes) {
+      if (char === "\r" && next === "\n") {
+        index += 1;
+      }
+      row.push(field);
+      if (row.some((cell) => cell.trim() !== "")) {
+        rows.push(row);
+      }
+      row = [];
+      field = "";
+      continue;
+    }
+
+    field += char;
+  }
+
+  row.push(field);
+  if (row.some((cell) => cell.trim() !== "")) {
+    rows.push(row);
+  }
+
+  const headers = rows.shift().map((header) => normalize(header));
+  return rows.map((cells) => {
+    const record = Object.fromEntries(
+      headers.map((header, index) => [header, cells[index] || ""])
+    );
+
+    return {
+      ...record,
+      lat: Number(record.lat),
+      lng: Number(record.lng),
+      products: String(record.products || "")
+        .split(";")
+        .map((product) => product.trim())
+        .filter(Boolean),
+      demo: normalize(record.demo) === "true",
+    };
+  });
+}
+
 function matchesLocation(location) {
   const query = normalize(state.query);
   const matchesFilter =
@@ -73,8 +149,8 @@ function addMarker(location) {
   }).addTo(map);
 
   marker.bindPopup(`
-    <p class="popup-title">${location.name}</p>
-    <span>${location.address || ""}</span>
+    <p class="popup-title">${escapeHtml(location.name)}</p>
+    <span>${escapeHtml(location.address || "")}</span>
   `);
 
   marker.on("click", () => setActiveCard(location.id));
@@ -105,13 +181,19 @@ function fitVisibleMarkers(locations) {
   map.fitBounds(coordinates, { padding: [42, 42], maxZoom: 14 });
 }
 
+function refreshMap(locations) {
+  requestAnimationFrame(() => {
+    map.invalidateSize();
+    fitVisibleMarkers(locations);
+  });
+}
+
 function renderEmpty() {
   listEl.innerHTML = `
     <article class="empty-state">
-      <h3>Location list coming soon.</h3>
+      <h3>No matching locations.</h3>
       <p>
-        Verified Chicago stockists are being added now. Check back for the
-        live neighborhood list.
+        Try another neighborhood, side of town, or ZIP code.
       </p>
     </article>
   `;
@@ -125,7 +207,7 @@ function renderLocations() {
   state.markers.clear();
 
   visible.forEach(addMarker);
-  fitVisibleMarkers(visible);
+  refreshMap(visible);
 
   if (visible.length === 0) {
     renderEmpty();
@@ -135,14 +217,18 @@ function renderLocations() {
   listEl.innerHTML = visible
     .map(
       (location) => `
-        <article class="location-card" data-id="${location.id}" tabindex="0">
-          <h3>${location.name}</h3>
-          <p>${location.address}</p>
-          <span class="tag">${location.neighborhood || "Chicago"}</span>
-          <div class="meta">
-            <span>${location.hours || "Hours vary"}</span>
-            <span>${(location.products || ["Old Vienna chips"]).join(", ")}</span>
+        <article class="location-card" data-id="${escapeHtml(location.id)}" tabindex="0">
+          <div class="card-title">
+            <h3>${escapeHtml(location.name)}</h3>
+            ${location.demo ? '<span class="sample-pill">Demo</span>' : ""}
           </div>
+          <p>${escapeHtml(location.address)}</p>
+          <span class="tag">${escapeHtml(location.neighborhood || "Chicago")}</span>
+          <div class="meta">
+            <span>${escapeHtml(location.hours || "Hours vary")}</span>
+            <span>${escapeHtml((location.products || ["Old Vienna chips"]).join(", "))}</span>
+          </div>
+          ${location.notes ? `<p class="notes">${escapeHtml(location.notes)}</p>` : ""}
         </article>
       `
     )
@@ -168,11 +254,11 @@ function renderLocations() {
 
 async function loadLocations() {
   try {
-    const response = await fetch("locations.json", { cache: "no-store" });
+    const response = await fetch("locations.csv", { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`Location fetch failed: ${response.status}`);
     }
-    state.locations = await response.json();
+    state.locations = parseCsv(await response.text());
   } catch (error) {
     console.error(error);
     state.locations = [];
@@ -193,6 +279,10 @@ filters.forEach((button) => {
     state.activeFilter = button.dataset.filter;
     renderLocations();
   });
+});
+
+window.addEventListener("resize", () => {
+  refreshMap(state.locations.filter(matchesLocation));
 });
 
 loadLocations();

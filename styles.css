@@ -259,8 +259,28 @@ h2 {
 }
 
 .location-card h3 {
-  margin: 0 0 8px;
+  margin: 0;
   font-size: 1rem;
+}
+
+.card-title {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.sample-pill {
+  flex: 0 0 auto;
+  padding: 4px 7px;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  background: var(--red);
+  border-radius: 999px;
 }
 
 .meta {
@@ -281,6 +301,13 @@ h2 {
   font-weight: 900;
   background: rgba(47, 125, 85, 0.12);
   border-radius: 999px;
+}
+
+.notes {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .empty-state {
@@ -304,9 +331,102 @@ h2 {
 }
 
 #map {
+  position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background: #eadfce;
+}
+
+/* Minimal Leaflet layout fallback in case the CDN stylesheet is delayed. */
+.leaflet-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+  user-select: none;
+}
+
+.leaflet-tile {
+  width: 256px;
+  height: 256px;
+}
+
+.leaflet-control-container .leaflet-top,
+.leaflet-control-container .leaflet-bottom {
+  position: absolute;
+  z-index: 1000;
+}
+
+.leaflet-control-container .leaflet-top {
+  top: 10px;
+}
+
+.leaflet-control-container .leaflet-bottom {
+  bottom: 10px;
+}
+
+.leaflet-control-container .leaflet-left {
+  left: 10px;
+}
+
+.leaflet-control-container .leaflet-right {
+  right: 10px;
+}
+
+.leaflet-control {
+  clear: both;
+  float: left;
+}
+
+.leaflet-right .leaflet-control {
+  float: right;
+}
+
+.leaflet-control-zoom a {
+  display: block;
+  width: 30px;
+  height: 30px;
+  color: var(--ink);
+  font-weight: 900;
+  line-height: 30px;
+  text-align: center;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.leaflet-control-zoom a:first-child {
+  border-radius: 6px 6px 0 0;
+}
+
+.leaflet-control-zoom a:last-child {
+  border-bottom: 0;
+  border-radius: 0 0 6px 6px;
+}
+
+.leaflet-control-attribution {
+  padding: 3px 6px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  background: rgba(255, 255, 255, 0.82);
 }
 
 .popup-title {

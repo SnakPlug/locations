@@ -1,0 +1,25 @@
+id,name,address,neighborhood,area,zip,lat,lng,hours,products,notes,demo
+logan-square-demo,Logan Square Demo Market,"Milwaukee & California, Chicago, IL 60647",Logan Square,north,60647,41.9287,-87.6978,Daily 9 AM-9 PM,"Old Vienna chips; Red Hot Riplets",Endcap display by snacks,true
+avondale-demo,Avondale Demo Pantry,"Belmont & Kimball, Chicago, IL 60618",Avondale,north,60618,41.9395,-87.7112,Daily 10 AM-8 PM,"Old Vienna chips; BBQ chips",Counter display,true
+uptown-demo,Uptown Demo Foods,"Broadway & Wilson, Chicago, IL 60640",Uptown,north,60640,41.9652,-87.6579,Daily 8 AM-10 PM,"Old Vienna chips; Hot Corn Chips",Snack aisle feature,true
+rogers-park-demo,Rogers Park Demo Grocery,"Clark & Devon, Chicago, IL 60626",Rogers Park,north,60626,41.9978,-87.6697,Daily 9 AM-9 PM,"Old Vienna chips; Sour Cream & Onion",Checkout rack,true
+lincoln-square-demo,Lincoln Square Demo Mart,"Lincoln & Lawrence, Chicago, IL 60625",Lincoln Square,north,60625,41.9685,-87.6887,Daily 8 AM-9 PM,"Old Vienna chips; Red Hot Riplets",Front-of-store display,true
+wicker-park-demo,Wicker Park Demo Corner,"Damen & North, Chicago, IL 60647",Wicker Park,north,60647,41.9106,-87.6777,Daily 10 AM-10 PM,"Old Vienna chips; BBQ chips",Partner shelf,true
+austin-demo,Austin Demo Foods,"Chicago & Central, Chicago, IL 60651",Austin,west,60651,41.8945,-87.7657,Daily 8 AM-10 PM,"Old Vienna chips; Red Hot Riplets",Large format bags,true
+garfield-park-demo,Garfield Park Demo Market,"Madison & Kedzie, Chicago, IL 60612",Garfield Park,west,60612,41.8801,-87.7059,Daily 9 AM-8 PM,"Old Vienna chips; Hot Corn Chips",Snack rack,true
+humboldt-park-demo,Humboldt Park Demo Pantry,"Division & California, Chicago, IL 60622",Humboldt Park,west,60622,41.9027,-87.6962,Daily 9 AM-9 PM,"Old Vienna chips; BBQ chips",Neighborhood feature,true
+pilsen-demo,Pilsen Demo Grocery,"18th & Blue Island, Chicago, IL 60608",Pilsen,west,60608,41.8575,-87.6612,Daily 8 AM-10 PM,"Old Vienna chips; Red Hot Riplets",Aisle marker,true
+little-village-demo,Little Village Demo Market,"26th & Kedzie, Chicago, IL 60623",Little Village,west,60623,41.8441,-87.7058,Daily 9 AM-9 PM,"Old Vienna chips; BBQ chips",Family-size section,true
+west-loop-demo,West Loop Demo Market,"Madison & Morgan, Chicago, IL 60607",West Loop,west,60607,41.8819,-87.6514,Daily 8 AM-9 PM,"Old Vienna chips; Sour Cream & Onion",Lunch rush shelf,true
+bronzeville-demo,Bronzeville Demo Foods,"47th & King Dr, Chicago, IL 60653",Bronzeville,south,60653,41.8095,-87.6169,Daily 9 AM-9 PM,"Old Vienna chips; Red Hot Riplets",Checkout display,true
+hyde-park-demo,Hyde Park Demo Market,"53rd & Lake Park, Chicago, IL 60615",Hyde Park,south,60615,41.7996,-87.5887,Daily 8 AM-10 PM,"Old Vienna chips; BBQ chips",Campus-area shelf,true
+bridgeport-demo,Bridgeport Demo Pantry,"31st & Morgan, Chicago, IL 60608",Bridgeport,south,60608,41.8379,-87.6506,Daily 9 AM-8 PM,"Old Vienna chips; Hot Corn Chips",Front aisle,true
+englewood-demo,Englewood Demo Foods,"63rd & Halsted, Chicago, IL 60621",Englewood,south,60621,41.7796,-87.6449,Daily 8 AM-9 PM,"Old Vienna chips; Red Hot Riplets",Community market shelf,true
+beverly-demo,Beverly Demo Market,"95th & Western, Chicago, IL 60643",Beverly,south,60643,41.7200,-87.6837,Daily 9 AM-9 PM,"Old Vienna chips; BBQ chips",Weekend feature,true
+chatham-demo,Chatham Demo Corner,"79th & Cottage Grove, Chicago, IL 60619",Chatham,south,60619,41.7507,-87.6055,Daily 9 AM-10 PM,"Old Vienna chips; Sour Cream & Onion",Counter rack,true
+oak-park-demo,Oak Park Demo Foods,"Lake & Oak Park Ave, Oak Park, IL 60301",Oak Park,suburbs,60301,41.8886,-87.7942,Daily 8 AM-9 PM,"Old Vienna chips; Red Hot Riplets",Suburban partner shelf,true
+cicero-demo,Cicero Demo Market,"Cermak & Cicero, Cicero, IL 60804",Cicero,suburbs,60804,41.8519,-87.7448,Daily 9 AM-9 PM,"Old Vienna chips; BBQ chips",Endcap display,true
+evanston-demo,Evanston Demo Grocery,"Davis & Sherman, Evanston, IL 60201",Evanston,suburbs,60201,42.0476,-87.6817,Daily 9 AM-8 PM,"Old Vienna chips; Hot Corn Chips",Downtown shelf,true
+skokie-demo,Skokie Demo Foods,"Oakton & Skokie Blvd, Skokie, IL 60077",Skokie,suburbs,60077,42.0265,-87.7471,Daily 8 AM-9 PM,"Old Vienna chips; Sour Cream & Onion",Family-size section,true
+berwyn-demo,Berwyn Demo Pantry,"Cermak & Oak Park Ave, Berwyn, IL 60402",Berwyn,suburbs,60402,41.8513,-87.7947,Daily 9 AM-9 PM,"Old Vienna chips; BBQ chips",Corner-store rack,true
+blue-island-demo,Blue Island Demo Market,"Western & Vermont, Blue Island, IL 60406",Blue Island,suburbs,60406,41.6573,-87.6802,Daily 9 AM-8 PM,"Old Vienna chips; Red Hot Riplets",South suburban feature,true
