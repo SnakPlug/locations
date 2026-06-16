@@ -1,0 +1,392 @@
+:root {
+  --ink: #231f20;
+  --muted: #6f645b;
+  --line: #ddd4ca;
+  --paper: #fffaf1;
+  --panel: #fffdf8;
+  --red: #d5252a;
+  --gold: #f5b437;
+  --green: #2f7d55;
+  --shadow: 0 18px 50px rgba(35, 31, 32, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background:
+    linear-gradient(rgba(255, 250, 241, 0.88), rgba(255, 250, 241, 0.94)),
+    radial-gradient(circle at 20% 20%, rgba(245, 180, 55, 0.35), transparent 30%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(213, 37, 42, 0.08) 0,
+      rgba(213, 37, 42, 0.08) 2px,
+      transparent 2px,
+      transparent 18px
+    ),
+    var(--paper);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 14px clamp(16px, 4vw, 48px);
+  background: rgba(255, 250, 241, 0.92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-mark {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  color: #fff;
+  font-weight: 900;
+  background: var(--red);
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+  line-height: 1.1;
+}
+
+.brand small,
+.eyebrow,
+.footer,
+.empty-state p,
+.meta {
+  color: var(--muted);
+}
+
+.topbar-link {
+  padding: 10px 14px;
+  color: #fff;
+  font-weight: 800;
+  background: var(--ink);
+  border-radius: 999px;
+}
+
+.hero {
+  display: grid;
+  min-height: 42vh;
+  padding: clamp(42px, 8vw, 88px) clamp(16px, 5vw, 72px);
+  align-items: end;
+  background:
+    linear-gradient(90deg, rgba(35, 31, 32, 0.82), rgba(35, 31, 32, 0.22)),
+    url("assets/hero-chip-aisle.png") center / cover;
+  color: #fff;
+}
+
+.hero-copy {
+  width: min(720px, 100%);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.hero .eyebrow {
+  color: var(--gold);
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 12ch;
+  margin-bottom: 18px;
+  font-size: clamp(3rem, 8vw, 6.8rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 1.4rem;
+}
+
+.hero p:last-child {
+  max-width: 58ch;
+  margin-bottom: 0;
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.locator {
+  display: grid;
+  grid-template-columns: minmax(330px, 420px) minmax(0, 1fr);
+  min-height: 720px;
+  border-top: 1px solid var(--line);
+}
+
+.panel {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.count {
+  display: grid;
+  min-width: 42px;
+  height: 42px;
+  place-items: center;
+  color: #fff;
+  font-weight: 900;
+  background: var(--red);
+  border-radius: 50%;
+}
+
+.search input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+}
+
+.search input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(213, 37, 42, 0.15);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.filter {
+  min-height: 40px;
+  padding: 0 8px;
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 800;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.filter.is-active {
+  color: #fff;
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+  overflow: auto;
+  padding-bottom: 4px;
+}
+
+.location-card,
+.empty-state {
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.location-card {
+  cursor: pointer;
+}
+
+.location-card:hover,
+.location-card.is-active {
+  border-color: var(--red);
+  box-shadow: 0 10px 24px rgba(35, 31, 32, 0.12);
+}
+
+.location-card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin-top: 12px;
+  font-size: 0.86rem;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 8px;
+  color: var(--green);
+  font-size: 0.8rem;
+  font-weight: 900;
+  background: rgba(47, 125, 85, 0.12);
+  border-radius: 999px;
+}
+
+.empty-state {
+  border-style: dashed;
+}
+
+.empty-state h3 {
+  margin: 0 0 8px;
+}
+
+.empty-state p {
+  margin-bottom: 0;
+  line-height: 1.55;
+}
+
+.map-wrap {
+  position: sticky;
+  top: 72px;
+  height: calc(100vh - 72px);
+  min-height: 640px;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  background: #eadfce;
+}
+
+.popup-title {
+  margin: 0 0 4px;
+  font-weight: 900;
+}
+
+.chip-marker {
+  display: grid;
+  place-items: center;
+}
+
+.chip-marker span {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: var(--red);
+  border: 4px solid var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 3px 14px rgba(35, 31, 32, 0.35);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px clamp(16px, 4vw, 48px);
+  border-top: 1px solid var(--line);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .locator {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    border-right: 0;
+    box-shadow: none;
+  }
+
+  .map-wrap {
+    position: relative;
+    top: auto;
+    height: 58vh;
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar {
+    min-height: 66px;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .topbar-link {
+    padding: 9px 11px;
+  }
+
+  .hero {
+    min-height: 48vh;
+  }
+
+  .filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+}

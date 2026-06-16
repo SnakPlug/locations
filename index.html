@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Old Vienna Chicago Locations</title>
+    <meta
+      name="description"
+      content="Find Chicago-area stores carrying Old Vienna chips."
+    />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIINfQv5YLaEqaFluH5rqLq2F5fLjo+W20E="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar" aria-label="Site header">
+      <a class="brand" href="./" aria-label="Old Vienna Chicago locations">
+        <span class="brand-mark" aria-hidden="true">OV</span>
+        <span>
+          <strong>Old Vienna</strong>
+          <small>Chicago Stockists</small>
+        </span>
+      </a>
+      <a class="topbar-link" href="#locations">Locations</a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Chicago-area chips map</p>
+          <h1 id="page-title">Find Old Vienna chips near you.</h1>
+          <p>
+            A live directory for neighborhood markets, corner stores, and
+            partner locations carrying Old Vienna chips around Chicago.
+          </p>
+        </div>
+      </section>
+
+      <section class="locator" id="locations" aria-label="Location finder">
+        <aside class="panel" aria-label="Location list">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Stockists</p>
+              <h2>Chicago locations</h2>
+            </div>
+            <span class="count" id="location-count">0</span>
+          </div>
+
+          <label class="search">
+            <span class="visually-hidden">Search locations</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="Search by name, neighborhood, or ZIP"
+              autocomplete="off"
+            />
+          </label>
+
+          <div class="filters" role="group" aria-label="Location filters">
+            <button class="filter is-active" type="button" data-filter="all">
+              All
+            </button>
+            <button class="filter" type="button" data-filter="north">
+              North
+            </button>
+            <button class="filter" type="button" data-filter="west">
+              West
+            </button>
+            <button class="filter" type="button" data-filter="south">
+              South
+            </button>
+            <button class="filter" type="button" data-filter="suburbs">
+              Suburbs
+            </button>
+          </div>
+
+          <div class="list" id="location-list" aria-live="polite"></div>
+        </aside>
+
+        <div class="map-wrap">
+          <div id="map" aria-label="Map of Old Vienna chip locations"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Old Vienna Chicago Locations</span>
+      <span>Built for neighborhood discovery.</span>
+    </footer>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
