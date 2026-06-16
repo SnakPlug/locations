@@ -1,10 +1,12 @@
-# Old Vienna — Chicago Stock Finder
+# SnakPlug — Chicago Snack Distribution
 
 *When you need more of that sweet Old Vienna, you know where to find it.*
 
-A fast, mobile-first, app-style finder for the corner stores, bodegas, and
-neighborhood markets keeping **Old Vienna** on the shelf across Chicagoland.
-No map to fuss with — just a clean list of spots and one-tap directions.
+The official site for **SnakPlug**, the Chicago distributor that finds the
+storefronts, stocks the shelves, and gets **Old Vienna** into hands all over the
+city. The centerpiece is a fast, mobile-first, app-style finder for every spot
+SnakPlug keeps stocked — no map to fuss with, just a clean list and one-tap
+directions. *Local. Delivered. Loved.*
 
 🔗 **Live demo:** https://snakplug.github.io/locations/
 
@@ -12,7 +14,7 @@ No map to fuss with — just a clean list of spots and one-tap directions.
 > demonstration purposes — every record is flagged `demo` and labeled in the
 > UI. No real store inventory is published. See [Editing store data](#editing-store-data).
 
-![Old Vienna Chicago Stock Finder](docs/preview.png)
+![SnakPlug — Chicago Snack Distribution](docs/preview.png)
 
 ---
 
