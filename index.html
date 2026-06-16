@@ -3,89 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#1a1513" />
-    <title>Old Vienna · Find Us in Chicago</title>
+    <meta name="theme-color" content="#141110" />
+    <title>Old Vienna · Find Your Stock — Chicago</title>
     <meta
       name="description"
-      content="Find neighborhood markets, corner stores, and partners carrying Old Vienna chips across Chicagoland."
+      content="When you need more of that sweet Old Vienna, you know where to find it. The corner stores and neighborhood markets keeping Chicago stocked."
     />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
-    />
-
-    <link rel="preconnect" href="https://unpkg.com" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIINfQv5YLaEqaFluH5rqLq2F5fLjo+W20E="
-      crossorigin=""
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="topbar" aria-label="Site header">
-      <a class="brand" href="./" aria-label="Old Vienna — Chicago store finder">
+      <a class="brand" href="./" aria-label="Old Vienna — Chicago stock finder">
         <span class="brand-mark" aria-hidden="true">OV</span>
         <span class="brand-text">
           <strong>Old Vienna</strong>
-          <small>Store Finder</small>
+          <small>Chicago Stock Finder</small>
         </span>
       </a>
       <nav class="topnav" aria-label="Primary">
-        <span class="demo-flag" title="Demonstration data">Demo build</span>
-        <a class="btn btn-dark" href="#locator">Find a store</a>
+        <span class="demo-flag" title="Demonstration data">Demo</span>
+        <a class="btn btn-red btn-sm" href="#finder">Find stock</a>
       </nav>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="page-title">
         <div class="hero-inner">
-          <p class="eyebrow eyebrow-gold">Chicagoland Store Finder</p>
+          <p class="eyebrow">Straight off the Chicago streets</p>
           <h1 id="page-title">
-            Your favorite chips,<br /><span class="accent">right around the corner.</span>
+            When I need that sweet <span class="accent">Old Vienna</span>,
+            I know where to&nbsp;find&nbsp;it.
           </h1>
           <p class="hero-sub">
-            From Logan Square to the South Side, find the neighborhood markets and
-            corner stores stocking Old Vienna — fresh, crunchy, and close to home.
+            From Logan Square to the South Side — the corner stores, bodegas, and
+            neighborhood markets keeping the block stocked. Pull it up, grab your
+            bag, get back out there.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-red" href="#locator">Find chips near me</a>
-            <a class="btn btn-ghost" href="#locator">Browse all stores</a>
+            <a class="btn btn-red btn-lg" href="#finder">Find stock near me</a>
+            <a class="btn btn-ghost btn-lg" href="#finder">Browse the city</a>
           </div>
           <dl class="stat-strip" aria-label="Coverage at a glance">
-            <div class="stat">
-              <dt>Stockists</dt>
-              <dd id="stat-stores">—</dd>
-            </div>
-            <div class="stat">
-              <dt>Neighborhoods</dt>
-              <dd id="stat-hoods">—</dd>
-            </div>
-            <div class="stat">
-              <dt>Flavors</dt>
-              <dd id="stat-flavors">—</dd>
-            </div>
+            <div class="stat"><dt>Spots</dt><dd id="stat-stores">—</dd></div>
+            <div class="stat"><dt>Hoods</dt><dd id="stat-hoods">—</dd></div>
+            <div class="stat"><dt>Flavors</dt><dd id="stat-flavors">—</dd></div>
           </dl>
         </div>
       </section>
 
-      <section class="locator" id="locator" aria-label="Store finder" data-view="list">
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track" id="ticker-track">
+          <span>Red Hot Riplets</span><span class="dot">★</span>
+          <span>BBQ</span><span class="dot">★</span>
+          <span>Hot Corn Chips</span><span class="dot">★</span>
+          <span>Sour Cream &amp; Onion</span><span class="dot">★</span>
+          <span>Old Vienna Originals</span><span class="dot">★</span>
+        </div>
+      </div>
+
+      <section class="finder" id="finder" aria-label="Stock finder">
         <div class="control-bar">
           <div class="control-row">
             <label class="search">
-              <span class="visually-hidden">Search stores</span>
+              <span class="visually-hidden">Search spots</span>
               <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M21 21l-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
               </svg>
               <input
                 id="search"
                 type="search"
-                placeholder="Search store, neighborhood, or ZIP"
+                placeholder="Search a spot, neighborhood, or ZIP"
                 autocomplete="off"
                 enterkeyhint="search"
               />
@@ -99,49 +94,31 @@
           </div>
 
           <div class="filters" role="group" aria-label="Filter by area">
-            <button class="chip is-active" type="button" data-filter="all">All areas</button>
+            <button class="chip is-active" type="button" data-filter="all">All Chicago</button>
             <button class="chip" type="button" data-filter="north">North Side</button>
             <button class="chip" type="button" data-filter="west">West Side</button>
             <button class="chip" type="button" data-filter="south">South Side</button>
             <button class="chip" type="button" data-filter="suburbs">Suburbs</button>
           </div>
-
-          <div class="view-toggle" role="group" aria-label="Switch between list and map">
-            <button class="seg is-active" type="button" data-view="list">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
-              List
-            </button>
-            <button class="seg" type="button" data-view="map">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l6 2 6-2v14l-6 2-6-2-6 2V6zM9 4v14M15 6v14"/></svg>
-              Map
-            </button>
-          </div>
         </div>
 
-        <div class="results">
-          <aside class="panel" aria-label="Store list">
-            <div class="panel-heading">
-              <h2><span id="location-count">0</span> stores found</h2>
-              <p class="panel-sub" id="panel-sub">Tap a store to see it on the map</p>
-            </div>
-            <div class="list" id="location-list" aria-live="polite"></div>
-          </aside>
-
-          <div class="map-wrap">
-            <div id="map" aria-label="Map of stores carrying Old Vienna chips"></div>
-          </div>
+        <div class="results-head">
+          <h2><span id="location-count">0</span> spots holding it down</h2>
+          <p class="results-sub" id="results-sub">Tap a spot for directions</p>
         </div>
+
+        <div class="feed" id="location-list" aria-live="polite"></div>
       </section>
 
       <section class="cta-band" aria-label="Retailer call to action">
         <div class="cta-inner">
-          <p class="eyebrow eyebrow-gold">Stock Old Vienna</p>
-          <h2>Want your store on this map?</h2>
+          <p class="eyebrow eyebrow-gold">Run a shop?</p>
+          <h2>Put Old Vienna on your shelves.</h2>
           <p class="cta-sub">
-            Independent grocers and corner stores across Chicagoland carry Old Vienna.
-            Join them and get discovered by snack lovers in your neighborhood.
+            Independent grocers and corner stores across Chicagoland move serious
+            Old Vienna. Stock the block and get found by the whole neighborhood.
           </p>
-          <a class="btn btn-red" href="mailto:partnerships@oldvienna.example?subject=Become%20an%20Old%20Vienna%20stockist">Become a stockist</a>
+          <a class="btn btn-cream btn-lg" href="mailto:partnerships@oldvienna.example?subject=Become%20an%20Old%20Vienna%20stockist">Become a stockist</a>
         </div>
       </section>
     </main>
@@ -149,10 +126,10 @@
     <footer class="footer">
       <div class="footer-brand">
         <span class="brand-mark small" aria-hidden="true">OV</span>
-        <span>Old Vienna · Chicago Store Finder</span>
+        <span>Old Vienna · Chicago Stock Finder</span>
       </div>
       <nav class="footer-links" aria-label="Footer">
-        <a href="#locator">Find a store</a>
+        <a href="#finder">Find stock</a>
         <a href="mailto:partnerships@oldvienna.example?subject=Become%20an%20Old%20Vienna%20stockist">Become a stockist</a>
         <a href="https://github.com/SnakPlug/locations" target="_blank" rel="noopener">Source on GitHub</a>
       </nav>
@@ -161,11 +138,6 @@
       </p>
     </footer>
 
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
     <script src="app.js" defer></script>
   </body>
 </html>

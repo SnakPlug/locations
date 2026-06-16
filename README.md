@@ -1,8 +1,10 @@
-# Old Vienna — Chicago Store Finder
+# Old Vienna — Chicago Stock Finder
 
-A fast, mobile-first store locator that helps snack lovers find the
-neighborhood markets, corner stores, and partners stocking **Old Vienna**
-chips across Chicagoland.
+*When you need more of that sweet Old Vienna, you know where to find it.*
+
+A fast, mobile-first, app-style finder for the corner stores, bodegas, and
+neighborhood markets keeping **Old Vienna** on the shelf across Chicagoland.
+No map to fuss with — just a clean list of spots and one-tap directions.
 
 🔗 **Live demo:** https://snakplug.github.io/locations/
 
@@ -10,36 +12,36 @@ chips across Chicagoland.
 > demonstration purposes — every record is flagged `demo` and labeled in the
 > UI. No real store inventory is published. See [Editing store data](#editing-store-data).
 
-![Old Vienna Chicago Store Finder](docs/preview.png)
+![Old Vienna Chicago Stock Finder](docs/preview.png)
 
 ---
 
 ## Highlights
 
-- **Mobile-first** — designed for phones first, with a full-screen
-  List ⇄ Map toggle and large, thumb-friendly tap targets.
-- **Find stores near you** — optional one-tap geolocation sorts stores by real
-  distance and drops a "you are here" pin (nothing is sent to a server).
-- **Search & filter** — instant search by store, neighborhood, or ZIP, plus
+- **Urban, app-style feel** — dark, street-forward design with a full-bleed
+  hero, a flavor ticker, and a fast card feed that reads like a native app.
+- **Find stock near you** — optional one-tap geolocation sorts spots by real
+  distance and ranks the closest first (nothing is sent to a server).
+- **Search & filter** — instant search by spot, neighborhood, or ZIP, plus
   area filters (North / West / South / Suburbs).
-- **One-tap directions** — every store deep-links into Google Maps for turn-by-turn
-  directions.
-- **No build step, no API keys** — a single static page that runs anywhere and
+- **Native directions** — every spot's Directions button hands the address
+  straight to the phone's maps app: **Apple Maps on iOS**, **Google Maps**
+  (native app on Android, web elsewhere).
+- **No map dependency, no API keys** — a single static page, no tiles to load,
   deploys straight to GitHub Pages.
-- **Accessible** — keyboard-navigable cards, visible focus states, ARIA labels,
+- **Accessible** — keyboard-friendly cards, visible focus states, ARIA labels,
   and reduced-motion support.
 
 ## Tech stack
 
 | Concern | Tool |
 | --- | --- |
-| Map | [Leaflet](https://leafletjs.com/) |
-| Basemap tiles | [CARTO Voyager](https://carto.com/basemaps/) on [OpenStreetMap](https://www.openstreetmap.org/) data |
-| Type | [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque) + [Inter](https://fonts.google.com/specimen/Inter) via Google Fonts |
+| Type | [Anton](https://fonts.google.com/specimen/Anton) + [Inter](https://fonts.google.com/specimen/Inter) via Google Fonts |
+| Directions | Native deep links — [Apple Maps](https://maps.apple.com/) / [Google Maps](https://www.google.com/maps) |
 | Data | Plain [`locations.csv`](locations.csv) — edit in any spreadsheet |
 | Hosting | [GitHub Pages](https://pages.github.com/) |
 
-No framework, no bundler — just HTML, CSS, and vanilla JavaScript.
+No framework, no bundler, no map library — just HTML, CSS, and vanilla JavaScript.
 
 ## Project structure
 
@@ -47,7 +49,7 @@ No framework, no bundler — just HTML, CSS, and vanilla JavaScript.
 locations/
 ├── index.html        # Page markup
 ├── styles.css        # Design system + responsive layout
-├── app.js            # Map, search, filters, geolocation
+├── app.js            # Search, filters, geolocation, directions
 ├── locations.csv     # Store data (edit this to add stores)
 ├── favicon.svg       # Brand mark
 ├── assets/           # Images (hero photo)
@@ -84,7 +86,7 @@ store-name-60600,Store Name,"123 Example Ave, Chicago, IL 60600",Neighborhood,no
 | `id` | Unique, URL-safe identifier |
 | `name`, `address`, `neighborhood`, `zip` | Display text |
 | `area` | One of `north`, `west`, `south`, `suburbs` (drives the filters) |
-| `lat`, `lng` | Coordinates — used for the map pin and "near me" distance. Preferred so the site needs no geocoding API |
+| `lat`, `lng` | Coordinates — power the "near me" distance ranking. Optional, but recommended so sorting works without a geocoding API |
 | `hours` | Free text, e.g. `Daily 9 AM-9 PM` |
 | `products` | Semicolon-separated list, e.g. `Old Vienna chips; BBQ chips` |
 | `notes` | Optional context shown on the card |
